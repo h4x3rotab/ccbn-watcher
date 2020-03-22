@@ -1,0 +1,10 @@
+{
+  "name": "ccbn-watcher",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "h4x3rotab <h4x3rotab@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "zeromq": "6.0.0-beta.6"
+  }
+}
