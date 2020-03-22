@@ -1,4 +1,5 @@
 const zmq = require('zeromq');
+const bgold = require('bgoldjs-lib')
 
 async function run() {
   const sock = new zmq.Subscriber;
@@ -16,6 +17,11 @@ async function run() {
     const [topic, data] = await sock.receive();
     const topicStr = topic.toString('utf8');
     console.log('[ZMQ]', topicStr, data.length);
+
+    if (topicStr == 'rawblock') {
+      const b = bgold.BlockGold.fromBuffer(data);
+      console.log('[ZMQ] block', b);
+    }
   }
 }
 
