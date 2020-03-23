@@ -7,18 +7,19 @@ rm -rf "$run"
 mkdir "$run"
 
 
+echo "[TEST] Starting bgoldd regtest"
 bgoldd -conf="${base}/regtest.conf" >/dev/null &
 echo "$!" > "${run}/bgoldd.pid"
 
 # start listener
 sleep 2
+echo "[TEST] Starting ccbn watcher"
 node --experimental-modules "${base}/../index.js" &
 sleep 2
 
-# mine a few blocks
-#bgold-cli 
-
+echo "[TEST] Starting reorg test"
 bash "$base/reorgTest.sh"
-sleep 2
+sleep 5
 
+echo "[TEST] clean up"
 pkill -P $$
