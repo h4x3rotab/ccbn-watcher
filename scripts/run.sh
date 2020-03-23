@@ -8,7 +8,7 @@ mkdir "$run"
 
 
 echo "[TEST] Starting bgoldd regtest"
-bgoldd -conf="${base}/regtest.conf" >/dev/null &
+bgoldd -conf="${base}/regtest.conf" -datadir="${run}" >/dev/null &
 echo "$!" > "${run}/bgoldd.pid"
 
 # start listener
